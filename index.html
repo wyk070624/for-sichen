@@ -1,1 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Sichen</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fff8f2;
+      color: #3a2a24;
+      line-height: 1.7;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(255, 248, 242, 0.72), rgba(255, 248, 242, 0.92)),
+        url("微信图片_20260528223906_558_45.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      padding: 42px 30px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 55px rgba(120, 80, 60, 0.18);
+    }
+
+    .small-title {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #a56b5f;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 3vw, 25px);
+      color: #5d4540;
+      margin-bottom: 30px;
+    }
+
+    .date {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid #d8aaa0;
+      border-radius: 999px;
+      color: #8b554c;
+      background: rgba(255, 255, 255, 0.65);
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 82px 22px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 46px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #7a5c55;
+      font-size: 17px;
+    }
+
+    .letter {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 40px 32px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 12px 35px rgba(120, 80, 60, 0.12);
+      font-size: 18px;
+      color: #4b3732;
+    }
+
+    .letter p {
+      margin-bottom: 18px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      overflow: hidden;
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 12px 35px rgba(120, 80, 60, 0.12);
+    }
+
+    .card.large {
+      grid-column: span 7;
+    }
+
+    .card.medium {
+      grid-column: span 5;
+    }
+
+    .card.small {
+      grid-column: span 4;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.04);
+    }
+
+    .caption {
+      padding: 18px 20px 22px;
+      font-size: 16px;
+      color: #6d514a;
+      background: #fff;
+    }
+
+    .quote-section {
+      background: #f3ded8;
+    }
+
+    .quote {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1.45;
+      color: #4a332f;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 20px;
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b554c;
+    }
+
+    .timeline {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      padding: 26px 28px;
+      margin-bottom: 22px;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(120, 80, 60, 0.1);
+    }
+
+    .timeline-item h3 {
+      font-size: 23px;
+      color: #8b554c;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .timeline-item p {
+      color: #5c4640;
+      font-size: 17px;
+    }
+
+    .ending {
+      text-align: center;
+      padding-bottom: 100px;
+    }
+
+    .ending h2 {
+      font-size: clamp(34px, 6vw, 58px);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .ending p {
+      max-width: 760px;
+      margin: 0 auto 26px;
+      color: #6a4d46;
+      font-size: 18px;
+    }
+
+    .heart {
+      font-size: 38px;
+      color: #c66a60;
+      animation: beat 1.5s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #8b6a62;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        padding: 60px 18px;
+      }
+
+      .hero-content {
+        padding: 34px 22px;
+      }
+
+      section {
+        padding: 64px 18px;
+      }
+
+      .gallery {
+        display: block;
+      }
+
+      .card {
+        margin-bottom: 18px;
+      }
+
+      .card.large,
+      .card.medium,
+      .card.small {
+        grid-column: auto;
+      }
+
+      .card img {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="small-title">Our First Anniversary</div>
+      <h1>For Sichen</h1>
+      <p>
+        One year, countless little moments, and a story that still feels like it has just begun.
+      </p>
+      <div class="date">2025.06 — 2026.06</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>A Letter to You</h2>
+        <p>Some words I want to keep here, quietly and seriously.</p>
+      </div>
+
+      <div class="letter">
+        <p>Dear Sichen,</p>
+
+        <p>
+          Before this year, I never really knew how many small details a person could remember because of love.
+          A classroom, a walk, a sunset, a small gift, a photo taken without much preparation —
+          they all became part of something precious.
+        </p>
+
+        <p>
+          This little website is not grand, and it is not perfect. But it is made for you, line by line,
+          just like the way I want to keep learning how to love you better, day by day.
+        </p>
+
+        <p>
+          Thank you for appearing in my life. Thank you for staying with me through our first year.
+          I hope that, many years later, when we look back at this page, we will still remember how young,
+          clumsy, sincere, and happy we once were.
+        </p>
+
+        <p>With love,<br />Yukun</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Little Pieces of Us</h2>
+        <p>Not perfect photos, but real memories.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="card large">
+          <img src="微信图片_20260528223906_558_45.jpg" alt="A sunset selfie by the river" />
+          <div class="caption">A quiet sunset, and the feeling that the world became softer with you beside me.</div>
+        </div>
+
+        <div class="card medium">
+          <img src="微信图片_20260528223902_554_45.jpg" alt="A moment with gifts" />
+          <div class="caption">Some gifts are small, but the happiness inside them is not.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_20260528223910_562_45.jpg" alt="Cute handmade memories" />
+          <div class="caption">Tiny, cute, and somehow very us.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_20260528223626_539_45.jpg" alt="Studying together in the classroom" />
+          <div class="caption">The ordinary days that became unforgettable.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_20260528223635_545_45.jpg" alt="Matching rings" />
+          <div class="caption">A small promise, shining quietly on our hands.</div>
+        </div>
+
+        <div class="card medium">
+          <img src="微信图片_20260528223901_553_45.jpg" alt="A museum memory" />
+          <div class="caption">A trip, two red papers, and one shared memory.</div>
+        </div>
+
+        <div class="card large">
+          <img src="微信图片_20260528223634_544_45.jpg" alt="A formal school memory" />
+          <div class="caption">Growing up, standing together, and still smiling like children.</div>
+        </div>
+
+        <div class="card medium">
+          <img src="微信图片_20260528223627_540_45.jpg" alt="A school sports day memory" />
+          <div class="caption">From school days to today, some stories were quietly beginning long ago.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_2026-05-28_224315_453.jpg" alt="Soft little dolls" />
+          <div class="caption">Soft little things, carrying soft little memories.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_2026-05-28_224322_404.jpg" alt="A blue moment" />
+          <div class="caption">Some moments are blurry, but the feeling remains clear.</div>
+        </div>
+
+        <div class="card small">
+          <img src="微信图片_2026-05-28_224408_043.jpg" alt="A gift bag" />
+          <div class="caption">A small surprise, carefully prepared and warmly remembered.</div>
+        </div>
+
+        <div class="card medium">
+          <img src="微信图片_20260528223637_547_45.jpg" alt="A subway or station memory" />
+          <div class="caption">On the way somewhere, but always closer to each other.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote">
+      “I love you not only for what you are, but for what I am when I am with you.”
+      <span>Elizabeth Barrett Browning</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Our First Year</h2>
+        <p>A simple timeline for a not-so-simple story.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Before Us</h3>
+          <p>
+            We were classmates, familiar faces, and part of each other's ordinary youth before we became something more.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>The Beginning</h3>
+          <p>
+            In June 2025, our story officially began. It was a beginning I will always be thankful for.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Distance and Waiting</h3>
+          <p>
+            Different cities made us learn patience, trust, and the value of every chance to meet.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>One Year</h3>
+          <p>
+            One year is not the end of a story. It is only the first chapter I want to keep writing with you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ending">
+    <h2>Happy First Anniversary</h2>
+    <p>
+      This page is for you, Sichen.
+      May we keep walking together, through ordinary days and extraordinary years.
+    </p>
+    <div class="heart">♥</div>
+  </section>
+
+  <footer>
+    Made with love for Sichen · by Yukun
+  </footer>
+</body>
+</html>
